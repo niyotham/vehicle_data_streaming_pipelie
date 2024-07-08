@@ -1,0 +1,57 @@
+# Prerequisite
+# After clicking "Create build project" in Codebuild
+#  with the following environmental variables/key pairs
+#  Click Edit > Environment in CodeBuild
+# AWS_DEFAULT_REGION = your current aws default region ie "us-east-1"
+# AWS_ACCOUNT_ID = 12 digit Account ID ie "182675479319"
+# IMAGE_TAG = value "latest"
+# IMAGE_REPO_NAME = name of ECR repo ie d2b_000_ecr_repo
+# REPOSITORY_URI = full uri of ecr repo ie 182675479319.dkr.ecr.us-east-1.amazonaws.com/d2b_000_ecr_repo
+# please see the following for buildspec file reference: https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html
+# this file is used in aws codebuild 
+
+version: 0.2
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - echo | aws --version
+      - echo | docker --version
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+      - REPOSITORY_URI=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME
+
+      # this lines are required for code deploy/codepipeline stage
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - IMAGE_TAG=${COMMIT_HASH:=latest}
+
+  build:
+    commands:
+      - echo Build started on `date`
+      - pwd
+
+      - echo Building the Docker image...   
+      - docker build -t $REPOSITORY_URI:latest .
+      - echo Building the Docker image Completed - $REPOSITORY_URI:latest
+      
+      - echo Tagging the Docker image...
+      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
+      - echo Tagging the Docker image Completed - $REPOSITORY_URI:$latest $REPOSITORY_URI:$IMAGE_TAG
+
+  post_build:
+    commands:
+      - echo Build completed on `date` 
+
+      - echo Pushing the Docker image...
+      - docker push $REPOSITORY_URI:latest
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - echo "Docker Push to ECR Repository Completed -  $REPOSITORY_URI:$IMAGE_TAG"
+
+      # this lines are required for code deploy/codepipeline stage
+      # the name of the container can be obtained from the task definition file json file in ecs
+      - echo Writing the image definitions file... 
+      # - printf '[{"name":"second_producer-app","imageUri":"%s"}]' "$IMAGE_REPO_NAME" "$REPOSITORY_URI:$IMAGE_TAG" > imagedefinitions.json
+      - printf '[{"name":"second_producer-app","imageUri":"%s"}]' "$REPOSITORY_URI:$IMAGE_TAG" > imagedefinitions.json
+      - cat imagedefinitions.json
+artifacts:  
+  #this lines are required for code deploy/codepipeline stage 
+  files: imagedefinitions.json
