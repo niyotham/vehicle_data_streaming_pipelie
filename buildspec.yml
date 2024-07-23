@@ -18,11 +18,10 @@ phases:
       - echo | aws --version
       - echo | docker --version
       - aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 767397903004.dkr.ecr.eu-west-1.amazonaws.com
-      
     #   - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
       - docker pull $REPOSITORY_URI:$IMAGE_TAG || true
  
-      - REPOSITORY_URI=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME
+      - REPOSITORY_URI=767397903004.dkr.ecr.eu-west-1.amazonaws.com/d2b002_ecr_repo
 
       # this lines are required for code deploy/codepipeline stage
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
@@ -34,17 +33,18 @@ phases:
       - pwd
 
       - echo Building the Docker image...   
-      - docker build -t $REPOSITORY_URI:latest .
-      - echo Building the Docker image Completed - $REPOSITORY_URI:latest
+      - docker build -t d2b002_ecr_repo .
+    #   - docker build -t $REPOSITORY_URI:latest .
+      - echo Building the Docker image Completed - d2b002_ecr_repo 
       
       - echo Tagging the Docker image...
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
+    #   - docker tag d2b002_ecr_repo:latest 767397903004.dkr.ecr.eu-west-1.amazonaws.com/d2b002_ecr_repo:latest
       - echo Tagging the Docker image Completed - $REPOSITORY_URI:$latest $REPOSITORY_URI:$IMAGE_TAG
 
   post_build:
     commands:
       - echo Build completed on `date` 
-
       - echo Pushing the Docker image...
       - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
