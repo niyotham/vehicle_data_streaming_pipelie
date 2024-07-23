@@ -21,9 +21,11 @@ phases:
     #   - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
       - docker pull $REPOSITORY_URI:$IMAGE_TAG || true
       - REPOSITORY_URI=767397903004.dkr.ecr.eu-west-1.amazonaws.com/d2b002_ecr_repo
-      # this lines are required for code deploy/codepipeline stage
-      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
-      - IMAGE_TAG=${COMMIT_HASH:=latest}
+      - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
+      
+    #   # this lines are required for code deploy/codepipeline stage
+    #   - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+    #   - IMAGE_TAG=${COMMIT_HASH:=latest}
 
   build:
     commands:
