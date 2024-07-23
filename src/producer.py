@@ -90,7 +90,7 @@ def start_process(i:int):
 if __name__=='__main__':
     kdsname='d2d-app-kinesis-stream'
     
-    region='us-east-1'
+    region='eu-west-1'
     i=0
     try:
 
