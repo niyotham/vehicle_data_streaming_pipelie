@@ -35,8 +35,8 @@ phases:
       - docker build -t $REPOSITORY_URI:latest .
       - echo Building the Docker image Completed - $REPOSITORY_URI:latest
       - echo Tagging the Docker image...
-    #   - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
-      - docker tag d2b002_ecr_repo:latest 767397903004.dkr.ecr.eu-west-1.amazonaws.com/d2b002_ecr_repo:latest
+      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
+    #   - docker tag d2b002_ecr_repo:latest 767397903004.dkr.ecr.eu-west-1.amazonaws.com/d2b002_ecr_repo:latest
       - echo Tagging the Docker image Completed - $REPOSITORY_URI:$latest $REPOSITORY_URI:$IMAGE_TAG
 
   post_build:
