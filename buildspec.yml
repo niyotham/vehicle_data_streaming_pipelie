@@ -31,13 +31,14 @@ phases:
     commands:
       - echo Build started on `date`
       - pwd
-      - echo Building the Docker image...   
-      - docker build -t $REPOSITORY_URI:latest .
+      - echo Building the Docker image...
+      - docker build -t d2b002_ecr_repo .
+    #   - docker build -t $REPOSITORY_URI:latest .
       - echo Building the Docker image Completed - d2b002_ecr_repo 
       
       - echo Tagging the Docker image...
-      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
-    #   - docker tag d2b002_ecr_repo:latest 767397903004.dkr.ecr.eu-west-1.amazonaws.com/d2b002_ecr_repo:latest
+    #   - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
+      - docker tag d2b002_ecr_repo:latest 767397903004.dkr.ecr.eu-west-1.amazonaws.com/d2b002_ecr_repo:latest
       - echo Tagging the Docker image Completed - $REPOSITORY_URI:$latest $REPOSITORY_URI:$IMAGE_TAG
 
   post_build:
@@ -45,7 +46,8 @@ phases:
       - echo Build completed on `date` 
       - echo Pushing the Docker image...
       - docker push $REPOSITORY_URI:latest
-      - docker push $REPOSITORY_URI:$IMAGE_TAG
+    #   - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - docker push 767397903004.dkr.ecr.eu-west-1.amazonaws.com/d2b002_ecr_repo:latest
       - echo "Docker Push to ECR Repository Completed -  $REPOSITORY_URI:$IMAGE_TAG"
 
       # this lines are required for code deploy/codepipeline stage
