@@ -50,9 +50,14 @@ phases:
 
       # this lines are required for code deploy/codepipeline stage
       # the name of the container can be obtained from the task definition file json file in ecs
-      - echo Writing the image definitions file... 
-      # - printf '[{"name":"second_producer-app","imageUri":"%s"}]' "$IMAGE_REPO_NAME" "$REPOSITORY_URI:$IMAGE_TAG" > imagedefinitions.json
-      - printf '[{"name":"second_producer-app","imageUri":"%s"}]' "$REPOSITORY_URI:$IMAGE_TAG" > imagedefinitions.json
+    #   - echo Writing the image definitions file... 
+    #   # - printf '[{"name":"second_producer-app","imageUri":"%s"}]' "$IMAGE_REPO_NAME" "$REPOSITORY_URI:$IMAGE_TAG" > imagedefinitions.json
+    #   - printf '[{"name":"producer-app","imageUri":"%s"}]' "$REPOSITORY_URI:$IMAGE_TAG" > imagedefinitions.json
+    #   - cat imagedefinitions.json
+      - DOCKER_CONTAINER_NAME=producer-app-ecr
+      - printf '[{"name":"%s","imageUri":"%s"}]' $DOCKER_CONTAINER_NAME $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+      - echo $DOCKER_CONTAINER_NAME
+      - echo printing imagedefinitions.json
       - cat imagedefinitions.json
 artifacts:  
   #this lines are required for code deploy/codepipeline stage 
