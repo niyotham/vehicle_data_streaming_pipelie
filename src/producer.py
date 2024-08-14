@@ -112,7 +112,7 @@ if __name__=='__main__':
         
 
     except Exception as e:
-        print("Cannot load data due to  error: ", e)
+        print("Cannot load data due to the following error: ", e)
 
     finally:
         start_process(i)
