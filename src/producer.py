@@ -99,7 +99,7 @@ if __name__=='__main__':
                                     aws_access_key_id=aws_access_key_id,
                                     aws_secret_access_key=aws_secret_access_key
                                     )
-        print(f"{clientkinesis} client created")
+        print(f"{clientkinesis} client created.")
         response = clientkinesis.create_stream(
             StreamName=kdsname,
             ShardCount=1,
