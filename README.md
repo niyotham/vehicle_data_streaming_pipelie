@@ -62,3 +62,21 @@ select * from <VIEW_NAME>
 4. sudo python3.8 -m pip install psycopg2-binary -t python/
 
 5. zip -r dependancies.zip python
+
+## Final results
+
+- Build
+  The  logs while building the images using ecs cluster and service
+  ![logs while building the images](https://github.com/niyotham/vehicle_data_streaming_pipelie/blob/master/docs/logs.png)
+- Data Storage results.
+ > A view of `aws S3 bucket` data
+  ![]()
+
+> A view of  data loaded into `Redishift`
+1. Before sending the data to Redishift.
+  ![Creating an extenal view](https://github.com/niyotham/vehicle_data_streaming_pipelie/blob/master/docs/Untitled.png)
+  ![checkmaterview](https://github.com/niyotham/vehicle_data_streaming_pipelie/blob/master/docs/checkmaterview.png)
+  ![create materializedview](https://github.com/niyotham/vehicle_data_streaming_pipelie/blob/master/docs/create%20materializedview.png)
+3. After sending the data 
+  ![create materializedview](https://github.com/niyotham/vehicle_data_streaming_pipelie/blob/master/docs/resultin%20redshift.png)
+4. Deployment 
