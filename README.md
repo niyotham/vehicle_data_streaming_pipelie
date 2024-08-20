@@ -6,7 +6,7 @@ THis application gather latitudes and longituttes of the moving cars, and the pe
 
 ![](https://github.com/niyotham/vehicle_data_streaming_pipelie/blob/master/docs/CapstoneProject_Diagram%20(1).jpg)
 To do:
-1. send data to redshift
+[x] 1. send data to redshift
 2. create a lambda function to load data into s3 or Readshift
 3. read data into a csv
 4. do visualization
