@@ -1,6 +1,4 @@
-![image](https://github.com/user-attachments/assets/0de42d49-b354-45f8-b1b6-d7065a2e44d9)
-
-# A Vehicle_data_streaming-app
+# A Vehicle data streaming data engineering application.
 A Scalable aws streaming Application for real time reporting of the movement of the cars.
 THis application gather latitudes and longituttes of the moving cars, and the persist the data into AWS S3 and Redishift for data analyst to monitor cars movements and other partens.
 
