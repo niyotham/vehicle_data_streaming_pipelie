@@ -74,7 +74,7 @@ select * from <VIEW_NAME>
 
 > A view of  data loaded into `Redishift`
 1. Before sending the data to Redishift.
- - Creating an extenal view  ![Creating an extenal view](https://github.com/niyotham/vehicle_data_streaming_pipelie/blob/master/docs/Untitled.png)
+ - Creating an extenal schema  ![Creating an extenal view](https://github.com/niyotham/vehicle_data_streaming_pipelie/blob/master/docs/Untitled.png)
 -  check the materview
  ![checkmaterview](https://github.com/niyotham/vehicle_data_streaming_pipelie/blob/master/docs/checkmaterview.png)
 - create materializedview ![create materializedview](https://github.com/niyotham/vehicle_data_streaming_pipelie/blob/master/docs/create%20materializedview.png)
