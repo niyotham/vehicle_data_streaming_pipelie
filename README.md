@@ -6,9 +6,9 @@ THis application gather latitudes and longituttes of the moving cars, and the pe
 
 ![](https://github.com/niyotham/vehicle_data_streaming_pipelie/blob/master/docs/CapstoneProject_Diagram%20(1).jpg)
 The Steps to folow:
-- [] Write a script to generale real time vehicle data
-- [] Commit the local code to the AWS Codecommit: [AWS CODECOMMIT SETUP](https://github.com/niyotham/vehicle_data_streaming_pipelie/blob/master/docs/AWS%20SERVICES%20COVERED%20BY%20THIS%20PROJECT.docx)
-- [] 	Setting up AWS CodeCommit IAM User with HTTPs Git Credential for AWS CodeCommit.
+- [ ] Write a script to generale real time vehicle data
+- [ ] Commit the local code to the AWS Codecommit: [AWS CODECOMMIT SETUP](https://github.com/niyotham/vehicle_data_streaming_pipelie/blob/master/docs/AWS%20SERVICES%20COVERED%20BY%20THIS%20PROJECT.docx)
+- [ ] 	Setting up AWS CodeCommit IAM User with HTTPs Git Credential for AWS CodeCommit.
 - 
 
 - send data to redshift
