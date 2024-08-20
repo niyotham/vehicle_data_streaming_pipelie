@@ -6,6 +6,7 @@ THis application gather latitudes and longituttes of the moving cars, and the pe
 
 ![](https://github.com/niyotham/vehicle_data_streaming_pipelie/blob/master/docs/CapstoneProject_Diagram%20(1).jpg)
 # The Steps to folow:
+- Find detailed document of steps [here](https://github.com/niyotham/vehicle_data_streaming_pipelie/blob/master/docs/AWS%20SERVICES%20COVERED%20BY%20THIS%20PROJECT.docx)
 - [x] Write a script to generale real time vehicle data
 - [x]  Write a script or create a lambda function to load data into s3 
 - [x] Sending data to redshift
