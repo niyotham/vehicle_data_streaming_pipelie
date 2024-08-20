@@ -82,3 +82,20 @@ select * from <VIEW_NAME>
 - [ ]    read data into a csv
 - [ ]    do visualization
 - [ ]    Finish the codepipeline part
+<!-- CONTACT -->
+## Contributor
+
+👤 **Niyomukiza Thamar**
+
+- GitHub: [Niyomukiza Thamar](https://github.com/)
+- LinkedIn: [Niyomukiza Thamar](https://www.linkedin.com/in/)
+
+
+
+<!-- ACKNOWLEDGEMENTS -->
+## Acknowledgements
+ 
+
+## Show me your support
+
+Give  a ⭐ if you like this project! 
