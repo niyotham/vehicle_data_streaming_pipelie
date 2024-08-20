@@ -6,9 +6,9 @@ THis application gather latitudes and longituttes of the moving cars, and the pe
 
 ![](https://github.com/niyotham/vehicle_data_streaming_pipelie/blob/master/docs/CapstoneProject_Diagram%20(1).jpg)
 # The Steps to folow:
-- [ ] Write a script to generale real time vehicle data
-- [ ]  Write a script or create a lambda function to load data into s3 
-- [ ] Sending data to redshift
+- [x] Write a script to generale real time vehicle data
+- [x]  Write a script or create a lambda function to load data into s3 
+- [x] Sending data to redshift
  ### --- external schema for kinesis ---
 ```sql
  CREATE EXTERNAL SCHEMA streamdataschema
@@ -34,22 +34,18 @@ REFRESH MATERIALIZED VIEW <VIEW_NAME>;
 ``` sql
 select * from <VIEW_NAME>
 ```
-- [ ] `AWS CODECOMMIT SETUP`  Commit the local code to the AWS Codecommit: [AWS CODECOMMIT SETUP](https://github.com/niyotham/vehicle_data_streaming_pipelie/blob/master/docs/AWS%20SERVICES%20COVERED%20BY%20THIS%20PROJECT.docx)
+- [x] `AWS CODECOMMIT SETUP`  Commit the local code to the AWS Codecommit: [AWS CODECOMMIT SETUP](https://github.com/niyotham/vehicle_data_streaming_pipelie/blob/master/docs/AWS%20SERVICES%20COVERED%20BY%20THIS%20PROJECT.docx)
 1.  Setting up AWS CodeCommit IAM User with HTTPs Git Credential for AWS CodeCommit.
 2.  Create CodeCommit Repo `{not ecr repo!!!!!!}`
 3.  Copy GitHub Repo Data to AWS CodeCommit
-- [ ] `AWS CODEBUILD SETUP` [AWS CODEBUILD SETUP](https://github.com/niyotham/vehicle_data_streaming_pipelie/blob/master/docs/AWS%20SERVICES%20COVERED%20BY%20THIS%20PROJECT.docx)
+- [x] `AWS CODEBUILD SETUP` [AWS CODEBUILD SETUP](https://github.com/niyotham/vehicle_data_streaming_pipelie/blob/master/docs/AWS%20SERVICES%20COVERED%20BY%20THIS%20PROJECT.docx)
 1. Prepare ECR for CodeBuild.
 2. Sett up CodeBuild
 3.  Setup IAM roles and permissions To allow CodeBuild to push Docker images to ECR Note docker image can be pushed to dockerhub instead
-- [ ] `CODEDEPLOY` Takes docker image created in codebuild stage and deploy to ecs  [AWS CODEDEPLOY SETUP](https://github.com/niyotham/vehicle_data_streaming_pipelie/blob/master/docs/AWS%20SERVICES%20COVERED%20BY%20THIS%20PROJECT.docx)
+- [x] `CODEDEPLOY` Takes docker image created in codebuild stage and deploy to ecs  [AWS CODEDEPLOY SETUP](https://github.com/niyotham/vehicle_data_streaming_pipelie/blob/master/docs/AWS%20SERVICES%20COVERED%20BY%20THIS%20PROJECT.docx)
 1. Make Available ECS service infrastructure
 2. Create Deploy Stage
 3.  Run the Pipeline by making changes in the local repo and pushing to  CodeCommit
-	
-
-- [ ]    read data into a csv
-- [ ]    do visualization
 
 ## Additional dependencies for python_dependancies_cloud9 if you want to use psycopg2
 
@@ -70,7 +66,7 @@ select * from <VIEW_NAME>
   ![logs while building the images](https://github.com/niyotham/vehicle_data_streaming_pipelie/blob/master/docs/logs.png)
 - Data Storage results.
  > A view of `aws S3 bucket` data
-  ![]()
+  ![](https://github.com/niyotham/vehicle_data_streaming_pipelie/blob/master/docs/s3%20datapng.png)
 
 > A view of  data loaded into `Redishift`
 1. Before sending the data to Redishift.
@@ -81,3 +77,8 @@ select * from <VIEW_NAME>
 3. After sending the data 
  View the data into the redishift ![create materializedview](https://github.com/niyotham/vehicle_data_streaming_pipelie/blob/master/docs/resultin%20redshift.png)
 4. Deployment 
+  ![](https://github.com/niyotham/vehicle_data_streaming_pipelie/blob/master/docs/deployment.png)
+## Future Work
+- [ ]    read data into a csv
+- [ ]    do visualization
+- [ ]    Finish the codepipeline part
