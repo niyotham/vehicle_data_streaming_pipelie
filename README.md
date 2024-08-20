@@ -8,9 +8,9 @@ THis application gather latitudes and longituttes of the moving cars, and the pe
 The Steps to folow:
 - [ ] Write a script to generale real time vehicle data
 - [ ] `AWS CODECOMMIT SETUP`  Commit the local code to the AWS Codecommit: [AWS CODECOMMIT SETUP](https://github.com/niyotham/vehicle_data_streaming_pipelie/blob/master/docs/AWS%20SERVICES%20COVERED%20BY%20THIS%20PROJECT.docx)
-      1.  Setting up AWS CodeCommit IAM User with HTTPs Git Credential for AWS CodeCommit.
-      2. Create CodeCommit Repo `{not ecr repo!!!!!!}`
-      3. Copy GitHub Repo Data to AWS CodeCommit
+     >  Setting up AWS CodeCommit IAM User with HTTPs Git Credential for AWS CodeCommit.
+     >  Create CodeCommit Repo `{not ecr repo!!!!!!}`
+     >  Copy GitHub Repo Data to AWS CodeCommit
 - [ ] `AWS CODEBUILD SETUP`
       1. Prepare ECR for CodeBuild.
       2. Sett up CodeBuild
