@@ -14,7 +14,7 @@ THis application gather latitudes and longituttes of the moving cars, and the pe
 ```sql
  CREATE EXTERNAL SCHEMA streamdataschema
 FROM KINESIS
-IAM_ROLE 'arn:aws:iam::533267024701:role/redshiftkinesisrole';
+IAM_ROLE 'arn:aws:iam::XXXXXX:role/redshiftkinesisrole';
 ```
 ### ---- create materialized view ----
 ``` sql
